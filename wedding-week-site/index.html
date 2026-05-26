@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alen & Belen | Semana de boda en Ithaca</title>
+    <meta
+      name="description"
+      content="Cronograma visual e interactivo de la semana de boda de Alen y Belen en Ithaca, Cornell."
+    >
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231e2f26'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23fff8ec'%3EA+B%3C/text%3E%3C/svg%3E"
+    >
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <svg class="sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-llama" viewBox="0 0 64 64">
+        <path d="M17 50h29" />
+        <path d="M22 50V36l-4-8v-9l4-4 4 4v9l7 4h14l6 6v12" />
+        <path d="M33 50V37" />
+        <path d="M46 50V36" />
+        <path d="M22 16l-5-5" />
+        <path d="M26 19l4-6" />
+        <path d="M42 32l-3 7h-8" />
+        <circle cx="24" cy="24" r="1.3" />
+      </symbol>
+      <symbol id="icon-alpaca" viewBox="0 0 64 64">
+        <path d="M16 50h31" />
+        <path d="M21 50V34c0-8 5-14 12-14h4c7 0 12 6 12 14v16" />
+        <path d="M28 50V37" />
+        <path d="M42 50V37" />
+        <path d="M26 22c-2-6 1-11 6-11s8 5 6 11" />
+        <path d="M30 13l-4-5" />
+        <path d="M36 13l4-5" />
+        <path d="M25 30c3 3 17 3 20 0" />
+        <circle cx="32" cy="22" r="1.2" />
+      </symbol>
+      <symbol id="icon-chakana" viewBox="0 0 64 64">
+        <path d="M25 8h14v17h17v14H39v17H25V39H8V25h17z" />
+        <path d="M25 25h14v14H25z" />
+      </symbol>
+      <symbol id="icon-mountain" viewBox="0 0 64 64">
+        <path d="M6 50 24 18l8 14 8-10 18 28z" />
+        <path d="m20 26 5 4 5-4" />
+        <path d="m36 28 5 5 4-4" />
+      </symbol>
+      <symbol id="icon-quinoa" viewBox="0 0 64 64">
+        <path d="M32 55V12" />
+        <path d="M32 20c-8 0-13-4-15-10 8 0 13 4 15 10z" />
+        <path d="M32 30c8 0 13-4 15-10-8 0-13 4-15 10z" />
+        <path d="M32 40c-8 0-13-4-15-10 8 0 13 4 15 10z" />
+        <path d="M32 50c8 0 13-4 15-10-8 0-13 4-15 10z" />
+      </symbol>
+    </svg>
+
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand-mark">A+B</span>
+        <span>
+          <strong>Alen & Belen</strong>
+          <small>Sage Chapel, Cornell</small>
+        </span>
+      </a>
+      <nav class="day-nav" id="dayNav" aria-label="Días de la semana"></nav>
+      <a class="agenda-link" href="#agenda">Agenda</a>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio" aria-labelledby="heroTitle">
+        <figure class="hero-media">
+          <img id="heroImage" alt="">
+        </figure>
+        <div class="hero-copy">
+          <div class="hero-motifs" aria-hidden="true">
+            <svg><use href="#icon-llama"></use></svg>
+            <span></span>
+            <svg><use href="#icon-chakana"></use></svg>
+            <span></span>
+            <svg><use href="#icon-alpaca"></use></svg>
+          </div>
+          <p class="date-line">13-22 de junio de 2026 · Ithaca, New York</p>
+          <h1 id="heroTitle">Semana de boda en Ithaca</h1>
+          <p>
+            Un itinerario simple para que la familia sepa dónde vamos,
+            qué haremos y qué lugares queremos compartir antes y después de la boda.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#itinerario">Ver días</a>
+            <a class="secondary-button" href="#dia-20">Día de boda</a>
+          </div>
+          <div class="hero-llamas" aria-hidden="true">
+            <img src="./assets/llamas/llama-walking.png" alt="">
+            <span></span>
+            <img src="./assets/llamas/llama-laptop.png" alt="">
+          </div>
+        </div>
+      </section>
+
+      <div class="andean-band" aria-hidden="true">
+        <img class="band-llama band-llama-left" src="./assets/llamas/llama-eating.png" alt="">
+        <span></span>
+        <svg><use href="#icon-mountain"></use></svg>
+        <span></span>
+        <svg><use href="#icon-quinoa"></use></svg>
+        <span></span>
+        <svg><use href="#icon-llama"></use></svg>
+        <span></span>
+        <img class="band-llama band-llama-right" src="./assets/llamas/llama-resting.png" alt="">
+      </div>
+
+      <section class="itinerary" id="itinerario" aria-live="polite">
+        <div class="section-head">
+          <span>Itinerario visual</span>
+          <h2>Un día a la vez</h2>
+        </div>
+
+        <div class="day-shell">
+          <div class="day-toolbar">
+            <button class="circle-button" id="prevDay" type="button" aria-label="Día anterior">‹</button>
+            <div class="current-day" id="currentDayLabel">13 JUN</div>
+            <button class="circle-button" id="nextDay" type="button" aria-label="Día siguiente">›</button>
+          </div>
+
+          <article class="day-view" id="dayView"></article>
+        </div>
+      </section>
+
+      <section class="agenda" id="agenda">
+        <div class="section-head">
+          <span>Vista rápida</span>
+          <h2>Agenda completa</h2>
+        </div>
+        <div class="agenda-grid" id="agendaGrid"></div>
+      </section>
+
+      <footer class="credits" id="creditos">
+        <details>
+          <summary>Créditos de fotos</summary>
+          <div id="creditsList"></div>
+        </details>
+      </footer>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
