@@ -12,7 +12,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231e2f26'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23fff8ec'%3EA+B%3C/text%3E%3C/svg%3E"
     >
-    <link rel="stylesheet" href="./styles.css?v=20260526-agenda1">
+    <link rel="stylesheet" href="./styles.css?v=20260526-weddingdays1">
   </head>
   <body>
     <svg class="sprite" aria-hidden="true" focusable="false">
@@ -67,6 +67,7 @@
       <div class="header-links" aria-label="Secciones rápidas">
         <a class="agenda-link" href="#agenda">Agenda</a>
         <a class="agenda-link" href="#logistica">Carros</a>
+        <a class="agenda-link" href="#boda-info">Boda</a>
         <a class="agenda-link" href="#album">Fotos</a>
       </div>
     </header>
@@ -171,7 +172,7 @@
                 <li>Niki</li>
                 <li>Majo</li>
                 <li>Nickson</li>
-                <li>Fabri</li>
+                <li class="picked-up">Fabri</li>
               </ul>
               <p>Dirección de Fabricio por confirmar.</p>
             </article>
@@ -182,23 +183,136 @@
               <ul>
                 <li>Erika</li>
                 <li>Joerg</li>
-                <li>Lean</li>
-                <li>Oma</li>
+                <li class="picked-up">Lean</li>
+                <li class="picked-up">Oma</li>
               </ul>
               <p>Dirección de Airbnb por confirmar.</p>
             </article>
 
             <article class="car-card">
               <span>Grupo 3</span>
-              <h3>Salida desde Ithaca</h3>
+              <h3>Recogen a Alen y Belén</h3>
               <ul>
                 <li>Paty</li>
                 <li>Mirko</li>
                 <li>Ita</li>
-                <li>Belén</li>
-                <li>Alen</li>
+                <li class="picked-up">Belén</li>
+                <li class="picked-up">Alen</li>
               </ul>
               <p>Referencia confirmada: Steward Avenue 210, apt 2B.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="wedding-info" id="boda-info">
+        <div class="section-head">
+          <span>Días centrales</span>
+          <h2>Boda, recepción y pachamanca</h2>
+        </div>
+
+        <div class="wedding-shell">
+          <div class="map-grid" aria-label="Mapas de los días de boda">
+            <article class="map-card">
+              <span>Ceremonia · sábado 20</span>
+              <h3>Sage Chapel</h3>
+              <p>147 Ho Plaza, Ithaca, NY 14853</p>
+              <a
+                class="map-button map-button-light"
+                href="https://www.google.com/maps/search/?api=1&query=147%20Ho%20Plaza%2C%20Ithaca%2C%20NY%2014853"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Abrir en Maps
+              </a>
+            </article>
+
+            <article class="map-card">
+              <span>Recepción · sábado 20</span>
+              <h3>The Statler Hotel</h3>
+              <p>130 Statler Drive, Ithaca, NY 14853</p>
+              <a
+                class="map-button map-button-light"
+                href="https://www.google.com/maps/search/?api=1&query=130%20Statler%20Drive%2C%20Ithaca%2C%20NY%2014853"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Abrir en Maps
+              </a>
+            </article>
+
+            <article class="map-card">
+              <span>BBQ familiar · domingo 21</span>
+              <h3>Robert H. Treman State Park</h3>
+              <p>105 Enfield Falls Rd., Ithaca, NY 14850</p>
+              <a
+                class="map-button map-button-light"
+                href="https://www.google.com/maps/search/?api=1&query=105%20Enfield%20Falls%20Rd%2C%20Ithaca%2C%20NY%2014850"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Abrir en Maps
+              </a>
+            </article>
+          </div>
+
+          <div class="timeline-grid">
+            <article class="timeline-day">
+              <div class="timeline-title">
+                <span>Sábado 20 JUN</span>
+                <h3>Itinerario de boda</h3>
+              </div>
+              <ol class="hour-list">
+                <li>
+                  <time>11:30 a.m.</time>
+                  <p>Llegada con calma a Sage Chapel.</p>
+                </li>
+                <li>
+                  <time>12:00-1:00 p.m.</time>
+                  <p>Ceremonia en Sage Chapel.</p>
+                </li>
+                <li>
+                  <time>1:00-2:15 p.m.</time>
+                  <p>Fotos familiares y de pareja en campus Cornell.</p>
+                </li>
+                <li>
+                  <time>2:30 p.m.</time>
+                  <p>Inicio aproximado de la recepción en The Statler Hotel.</p>
+                </li>
+                <li>
+                  <time>Tarde</time>
+                  <p>Almuerzo, brindis, baile y celebración familiar.</p>
+                </li>
+              </ol>
+            </article>
+
+            <article class="timeline-day">
+              <div class="timeline-title">
+                <span>Domingo 21 JUN · tentativo</span>
+                <h3>BBQ y cataratas</h3>
+              </div>
+              <ol class="hour-list">
+                <li>
+                  <time>11:30 a.m.</time>
+                  <p>Encuentro en Robert H. Treman State Park.</p>
+                </li>
+                <li>
+                  <time>12:00 p.m.</time>
+                  <p>BBQ familiar y pachamanca.</p>
+                </li>
+                <li>
+                  <time>1:30 p.m.</time>
+                  <p>Caminata suave por Lowe Falls / Enfield Glen.</p>
+                </li>
+                <li>
+                  <time>3:00 p.m.</time>
+                  <p>Baño en cataratas si el parque, clima y seguridad lo permiten.</p>
+                </li>
+                <li>
+                  <time>4:30 p.m.</time>
+                  <p>Fotos, descanso y cierre del día.</p>
+                </li>
+              </ol>
             </article>
           </div>
         </div>
@@ -252,6 +366,6 @@
       </footer>
     </main>
 
-    <script src="./script.js?v=20260526-agenda1"></script>
+    <script src="./script.js?v=20260526-weddingdays1"></script>
   </body>
 </html>

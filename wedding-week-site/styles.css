@@ -444,6 +444,7 @@ h1 {
 .itinerary,
 .agenda,
 .logistics,
+.wedding-info,
 .album {
   padding: 92px clamp(18px, 5vw, 76px);
 }
@@ -864,8 +865,129 @@ figcaption a {
   font-weight: 900;
 }
 
+.car-card li.picked-up {
+  color: var(--red);
+  font-weight: 950;
+}
+
 .car-card p {
   margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.wedding-info {
+  position: relative;
+  background: var(--paper);
+  padding-top: 36px;
+}
+
+.wedding-shell {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.map-grid,
+.timeline-grid {
+  display: grid;
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.map-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.map-card,
+.timeline-day {
+  min-width: 0;
+  background: var(--surface);
+}
+
+.map-card {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  padding: 24px;
+}
+
+.map-card span,
+.timeline-title span {
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.map-card h3,
+.timeline-title h3 {
+  margin: 0;
+  font-family: var(--serif);
+  line-height: 1;
+}
+
+.map-card h3 {
+  font-size: clamp(26px, 3vw, 36px);
+}
+
+.map-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.map-button-light {
+  width: fit-content;
+  border-color: var(--deep);
+  color: var(--deep);
+}
+
+.timeline-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 24px;
+}
+
+.timeline-day {
+  padding: clamp(22px, 4vw, 34px);
+}
+
+.timeline-title h3 {
+  margin-top: 8px;
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.hour-list {
+  display: grid;
+  gap: 1px;
+  margin: 24px 0 0;
+  padding: 0;
+  background: var(--line);
+  list-style: none;
+}
+
+.hour-list li {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.36fr) 1fr;
+  gap: 18px;
+  align-items: start;
+  background: var(--surface);
+  padding: 15px 0;
+}
+
+.hour-list time {
+  padding-left: 16px;
+  color: var(--deep);
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.hour-list p {
+  margin: 0;
+  padding-right: 16px;
   color: var(--muted);
   font-size: 14px;
   line-height: 1.42;
@@ -1040,6 +1162,11 @@ figcaption a {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .map-grid,
+  .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+
   .car-grid {
     grid-template-columns: 1fr;
   }
@@ -1082,6 +1209,7 @@ figcaption a {
   .itinerary,
   .agenda,
   .logistics,
+  .wedding-info,
   .album {
     padding-left: 14px;
     padding-right: 14px;
@@ -1220,6 +1348,21 @@ figcaption a {
 
   .map-button {
     width: 100%;
+  }
+
+  .map-card,
+  .timeline-day {
+    padding: 22px;
+  }
+
+  .hour-list li {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .hour-list time,
+  .hour-list p {
+    padding-inline: 16px;
   }
 
   .car-card {
