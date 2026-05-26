@@ -694,6 +694,8 @@ figcaption a {
 
 .agenda-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   border: 0;
   padding: 0;
@@ -704,7 +706,9 @@ figcaption a {
 }
 
 .agenda-card img {
+  width: 100%;
   aspect-ratio: 1.2 / 1;
+  object-fit: cover;
 }
 
 .agenda-motif {
@@ -742,11 +746,12 @@ figcaption a {
 }
 
 .agenda-card strong {
-  min-height: 68px;
+  min-height: 98px;
   padding-top: 7px;
   font-family: var(--serif);
   font-size: 20px;
   line-height: 1.08;
+  overflow-wrap: break-word;
 }
 
 .agenda-card small {
