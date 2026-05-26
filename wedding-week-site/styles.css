@@ -940,6 +940,27 @@ figcaption a {
   line-height: 1.35;
 }
 
+.info-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.info-list li {
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.info-list strong {
+  color: var(--deep);
+  font-weight: 950;
+}
+
 .map-button-light {
   width: fit-content;
   border-color: var(--deep);
