@@ -70,6 +70,11 @@ section,
   min-width: 0;
 }
 
+main > section,
+.andean-band {
+  scroll-margin-top: 70px;
+}
+
 a {
   color: inherit;
 }
@@ -84,7 +89,7 @@ a {
   align-items: center;
   padding: 14px clamp(18px, 4vw, 46px);
   border-bottom: 1px solid var(--line);
-  background: rgba(248, 241, 227, 0.92);
+  background: rgba(248, 241, 227, 0.98);
   backdrop-filter: blur(18px);
 }
 
@@ -182,6 +187,12 @@ a {
   font-size: 12px;
   font-weight: 900;
   text-decoration: none;
+}
+
+.header-links {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
 }
 
 .hero {
@@ -431,7 +442,9 @@ h1 {
 }
 
 .itinerary,
-.agenda {
+.agenda,
+.logistics,
+.album {
   padding: 92px clamp(18px, 5vw, 76px);
 }
 
@@ -744,6 +757,165 @@ figcaption a {
   font-weight: 800;
 }
 
+.logistics {
+  position: relative;
+  background: var(--paper);
+  padding-top: 36px;
+}
+
+.logistics-shell,
+.album-shell {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.address-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+  border: 1px solid var(--line);
+  background: var(--deep);
+  color: var(--surface);
+  padding: clamp(22px, 4vw, 34px);
+  box-shadow: var(--shadow);
+}
+
+.address-card span,
+.car-card span {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.address-card h3,
+.car-card h3 {
+  margin: 8px 0 0;
+  font-family: var(--serif);
+  line-height: 1;
+}
+
+.address-card h3 {
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.address-card p {
+  margin: 12px 0 0;
+  color: rgba(255, 250, 241, 0.82);
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.35;
+}
+
+.map-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 250, 241, 0.6);
+  padding: 0 18px;
+  color: var(--surface);
+  font-size: 12px;
+  font-weight: 950;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 1px;
+  border: 1px solid var(--line);
+  border-top: 0;
+  background: var(--line);
+}
+
+.car-card {
+  min-width: 0;
+  background: var(--surface);
+  padding: 24px;
+}
+
+.car-card h3 {
+  color: var(--ink);
+  font-size: 30px;
+}
+
+.car-card ul {
+  display: grid;
+  gap: 7px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.car-card li {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 7px;
+  color: var(--deep);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.car-card p {
+  margin: 22px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.album {
+  position: relative;
+  background: var(--paper);
+  padding-top: 36px;
+}
+
+.album-shell > p {
+  max-width: 720px;
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.42;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.album-grid article {
+  display: grid;
+  min-height: 176px;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  background:
+    linear-gradient(135deg, rgba(217, 154, 23, 0.08), transparent 44%),
+    var(--surface);
+  padding: 18px 14px;
+  text-align: center;
+}
+
+.album-grid img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 14px rgba(37, 29, 24, 0.12));
+}
+
+.album-grid span {
+  color: var(--deep);
+  font-size: 12px;
+  font-weight: 950;
+  line-height: 1.2;
+}
+
 .credits {
   padding: 0 clamp(18px, 5vw, 76px) 52px;
 }
@@ -807,6 +979,11 @@ figcaption a {
 }
 
 @media (max-width: 1060px) {
+  main > section,
+  .andean-band {
+    scroll-margin-top: 136px;
+  }
+
   .site-header {
     grid-template-columns: 1fr auto;
   }
@@ -857,6 +1034,14 @@ figcaption a {
   .agenda-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .car-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .album-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 620px) {
@@ -879,6 +1064,10 @@ figcaption a {
     display: none;
   }
 
+  .header-links {
+    display: none;
+  }
+
   .day-button {
     width: 38px;
     height: 38px;
@@ -886,7 +1075,9 @@ figcaption a {
 
   .hero,
   .itinerary,
-  .agenda {
+  .agenda,
+  .logistics,
+  .album {
     padding-left: 14px;
     padding-right: 14px;
   }
@@ -1012,8 +1203,39 @@ figcaption a {
   }
 
   .agenda-grid,
+  .album-grid,
   #creditsList {
     grid-template-columns: 1fr;
+  }
+
+  .address-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .map-button {
+    width: 100%;
+  }
+
+  .car-card {
+    padding: 22px;
+  }
+
+  .car-card h3 {
+    font-size: 26px;
+  }
+
+  .album-grid article {
+    min-height: 136px;
+  }
+
+  .album-grid img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .credits {
+    padding-bottom: 220px;
   }
 
   .agenda-card {

@@ -308,6 +308,12 @@ function indexFromHash() {
   return found >= 0 ? found : 0;
 }
 
+function scrollToHashSection() {
+  if (!window.location.hash || window.location.hash.startsWith("#dia-")) return;
+  const target = document.getElementById(window.location.hash.slice(1));
+  if (target) target.scrollIntoView({ block: "start" });
+}
+
 function renderCredits() {
   const unique = new Map();
   days.forEach((day) => {
@@ -334,6 +340,7 @@ function render() {
   renderCredits();
   const hasDayHash = window.location.hash.startsWith("#dia-");
   updateActive(indexFromHash(), hasDayHash, hasDayHash);
+  requestAnimationFrame(() => requestAnimationFrame(scrollToHashSection));
 }
 
 render();
@@ -361,5 +368,7 @@ window.addEventListener("keydown", (event) => {
 window.addEventListener("hashchange", () => {
   if (window.location.hash.startsWith("#dia-")) {
     updateActive(indexFromHash(), true, false);
+  } else {
+    requestAnimationFrame(scrollToHashSection);
   }
 });

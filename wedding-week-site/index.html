@@ -12,7 +12,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231e2f26'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23fff8ec'%3EA+B%3C/text%3E%3C/svg%3E"
     >
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css?v=20260526-logistics6">
   </head>
   <body>
     <svg class="sprite" aria-hidden="true" focusable="false">
@@ -64,7 +64,11 @@
         </span>
       </a>
       <nav class="day-nav" id="dayNav" aria-label="Días de la semana"></nav>
-      <a class="agenda-link" href="#agenda">Agenda</a>
+      <div class="header-links" aria-label="Secciones rápidas">
+        <a class="agenda-link" href="#agenda">Agenda</a>
+        <a class="agenda-link" href="#logistica">Carros</a>
+        <a class="agenda-link" href="#album">Fotos</a>
+      </div>
     </header>
 
     <main>
@@ -135,6 +139,111 @@
         <div class="agenda-grid" id="agendaGrid"></div>
       </section>
 
+      <section class="logistics" id="logistica">
+        <div class="section-head">
+          <span>Carros y direcciones</span>
+          <h2>Logística familiar</h2>
+        </div>
+
+        <div class="logistics-shell">
+          <article class="address-card">
+            <div>
+              <span>Dirección confirmada</span>
+              <h3>Casa de Alen</h3>
+              <p>Steward Avenue 210, apt 2B, Ithaca.</p>
+            </div>
+            <a
+              class="map-button"
+              href="https://www.google.com/maps/search/?api=1&query=Steward%20Avenue%20210%2C%20apt%202B%2C%20Ithaca"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Abrir en Maps
+            </a>
+          </article>
+
+          <div class="car-grid" aria-label="Grupos de carros">
+            <article class="car-card">
+              <span>Grupo 1</span>
+              <h3>Recogen a Fabricio</h3>
+              <ul>
+                <li>Jose</li>
+                <li>Niki</li>
+                <li>Majo</li>
+                <li>Nickson</li>
+                <li>Fabri</li>
+              </ul>
+              <p>Dirección de Fabricio por confirmar.</p>
+            </article>
+
+            <article class="car-card">
+              <span>Grupo 2</span>
+              <h3>Recogen a Oma y Lean</h3>
+              <ul>
+                <li>Erika</li>
+                <li>Joerg</li>
+                <li>Lean</li>
+                <li>Oma</li>
+              </ul>
+              <p>Dirección de Airbnb por confirmar.</p>
+            </article>
+
+            <article class="car-card">
+              <span>Grupo 3</span>
+              <h3>Salida desde Ithaca</h3>
+              <ul>
+                <li>Paty</li>
+                <li>Mirko</li>
+                <li>Ita</li>
+                <li>Belén</li>
+                <li>Alen</li>
+              </ul>
+              <p>Referencia confirmada: Steward Avenue 210, apt 2B.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="album" id="album">
+        <div class="section-head">
+          <span>Recuerdos</span>
+          <h2>Álbum de fotos del viaje</h2>
+        </div>
+
+        <div class="album-shell">
+          <p>
+            Un espacio para guardar las fotos de la semana: familia, cataratas,
+            caminatas, comida peruana, la boda y el regreso.
+          </p>
+          <div class="album-grid" aria-label="Álbum de fotos por agregar">
+            <article>
+              <img src="./assets/llamas/llama-walking.png" alt="" aria-hidden="true">
+              <span>Llegadas y paseos</span>
+            </article>
+            <article>
+              <img src="./assets/llamas/llama-laptop.png" alt="" aria-hidden="true">
+              <span>PhDs en Ithaca</span>
+            </article>
+            <article>
+              <img src="./assets/llamas/llama-eating.png" alt="" aria-hidden="true">
+              <span>Comida y pachamanca</span>
+            </article>
+            <article>
+              <img src="./assets/llamas/llama-flower.png" alt="" aria-hidden="true">
+              <span>Boda y familia</span>
+            </article>
+            <article>
+              <img src="./assets/llamas/llama-blanket.png" alt="" aria-hidden="true">
+              <span>Viajes por los lagos</span>
+            </article>
+            <article>
+              <img src="./assets/llamas/llama-resting.png" alt="" aria-hidden="true">
+              <span>Despedida y cumpleaños</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <footer class="credits" id="creditos">
         <details>
           <summary>Créditos de fotos</summary>
@@ -143,6 +252,6 @@
       </footer>
     </main>
 
-    <script src="./script.js"></script>
+    <script src="./script.js?v=20260526-logistics6"></script>
   </body>
 </html>
