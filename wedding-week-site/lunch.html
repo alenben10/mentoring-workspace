@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alen & Belen | Lunch selection</title>
+    <meta
+      name="description"
+      content="Lunch selection form for guests of Alen and Belen's wedding week."
+    >
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231e2f26'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23fff8ec'%3EA+B%3C/text%3E%3C/svg%3E"
+    >
+    <link rel="stylesheet" href="./lunch.css?v=20260529-lunch1">
+  </head>
+  <body>
+    <header class="meal-header">
+      <a class="brand" href="./index.html" aria-label="Back to wedding week">
+        <span class="brand-mark">A+B</span>
+        <span>
+          <strong>Alen & Belen</strong>
+          <small>Sage Chapel, Cornell</small>
+        </span>
+      </a>
+      <nav class="meal-nav" aria-label="Wedding links">
+        <a href="./index.html">Week</a>
+        <a href="./index.html#boda-info">Wedding</a>
+      </nav>
+      <div class="language-switch" aria-label="Language">
+        <button class="language-button" type="button" data-lang="en" aria-current="true">English</button>
+        <button class="language-button" type="button" data-lang="ja">日本語</button>
+        <button class="language-button" type="button" data-lang="hi">हिन्दी</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="meal-hero" aria-labelledby="mealTitle">
+        <div class="hero-copy">
+          <p class="date-line">Alen & Belen · Ithaca, New York</p>
+          <h1 id="mealTitle" data-i18n="title">Wedding lunch selection</h1>
+          <p data-i18n="intro">
+            Please choose one lunch option per guest. The exact dishes will be updated soon.
+          </p>
+          <div class="status-row" aria-label="Form status">
+            <span data-i18n="deadline">Deadline to be confirmed</span>
+            <span data-i18n="onePerGuest">One response per guest</span>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <img src="./assets/photos/family-meal.jpg" alt="Family sharing a meal.">
+          <figcaption data-i18n="photoCaption">Family lunch preferences</figcaption>
+        </figure>
+      </section>
+
+      <section class="meal-workspace" aria-labelledby="formTitle">
+        <form class="meal-form" id="mealForm" novalidate>
+          <div class="form-heading">
+            <span data-i18n="formKicker">Guest response</span>
+            <h2 id="formTitle" data-i18n="formTitle">Tell us your lunch choice</h2>
+          </div>
+
+          <fieldset class="form-section">
+            <legend data-i18n="guestInfo">Guest information</legend>
+            <div class="field-grid">
+              <label>
+                <span data-i18n="guestName">Guest name</span>
+                <input id="guestName" name="guestName" type="text" autocomplete="name" required>
+              </label>
+              <label>
+                <span data-i18n="partyName">Family / party name</span>
+                <input id="partyName" name="partyName" type="text" autocomplete="organization">
+              </label>
+              <label>
+                <span data-i18n="contact">Email or phone</span>
+                <input id="contact" name="contact" type="text" autocomplete="email">
+              </label>
+              <label>
+                <span data-i18n="guestType">Guest type</span>
+                <select id="guestType" name="guestType">
+                  <option value="family" data-i18n="guestTypeFamily">Family</option>
+                  <option value="friend" data-i18n="guestTypeFriend">Friend</option>
+                  <option value="cornell" data-i18n="guestTypeCornell">Cornell</option>
+                  <option value="other" data-i18n="guestTypeOther">Other</option>
+                </select>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend data-i18n="mealLegend">Lunch options</legend>
+            <p class="section-note" data-i18n="mealNote">
+              These are placeholders. Alen will replace them with the real dishes.
+            </p>
+            <div class="meal-options" id="mealOptions"></div>
+          </fieldset>
+
+          <fieldset class="form-section">
+            <legend data-i18n="dietLegend">Dietary notes</legend>
+            <div class="check-grid">
+              <label><input type="checkbox" name="diet" value="no-restrictions"> <span data-i18n="dietNone">No restrictions</span></label>
+              <label><input type="checkbox" name="diet" value="vegetarian"> <span data-i18n="dietVegetarian">Vegetarian</span></label>
+              <label><input type="checkbox" name="diet" value="vegan"> <span data-i18n="dietVegan">Vegan</span></label>
+              <label><input type="checkbox" name="diet" value="gluten-free"> <span data-i18n="dietGluten">Gluten-free</span></label>
+              <label><input type="checkbox" name="diet" value="nut-allergy"> <span data-i18n="dietNuts">Nut allergy</span></label>
+              <label><input type="checkbox" name="diet" value="other"> <span data-i18n="dietOther">Other</span></label>
+            </div>
+            <label class="full-field">
+              <span data-i18n="notes">Notes for allergies or preferences</span>
+              <textarea id="notes" name="notes" rows="4"></textarea>
+            </label>
+          </fieldset>
+
+          <div class="form-actions">
+            <button class="primary-button" type="submit" data-i18n="submit">Submit lunch choice</button>
+            <button class="secondary-button" type="button" id="resetForm" data-i18n="reset">Clear form</button>
+          </div>
+          <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="summary-panel" aria-labelledby="summaryTitle">
+          <img src="./assets/llamas/llama-eating.png" alt="" aria-hidden="true">
+          <span data-i18n="summaryKicker">Live summary</span>
+          <h2 id="summaryTitle" data-i18n="summaryTitle">Current selection</h2>
+          <dl>
+            <div>
+              <dt data-i18n="summaryGuest">Guest</dt>
+              <dd id="summaryGuest">-</dd>
+            </div>
+            <div>
+              <dt data-i18n="summaryMeal">Meal</dt>
+              <dd id="summaryMeal">-</dd>
+            </div>
+            <div>
+              <dt data-i18n="summaryDiet">Dietary notes</dt>
+              <dd id="summaryDiet">-</dd>
+            </div>
+          </dl>
+          <p data-i18n="summaryHelp">
+            Once the final dishes are confirmed, this page can send responses to a spreadsheet.
+          </p>
+        </aside>
+      </section>
+
+      <section class="admin-panel" id="adminPanel" hidden>
+        <div>
+          <span>Admin preview</span>
+          <h2>Local test submissions</h2>
+          <p>
+            These entries are saved only in this browser until a collection endpoint is connected.
+          </p>
+        </div>
+        <div class="admin-actions">
+          <button class="secondary-button" type="button" id="downloadCsv">Download CSV</button>
+          <button class="secondary-button" type="button" id="clearLocal">Clear local tests</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="adminTable">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Name</th>
+                <th>Meal</th>
+                <th>Diet</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="./lunch.js?v=20260529-lunch1"></script>
+  </body>
+</html>

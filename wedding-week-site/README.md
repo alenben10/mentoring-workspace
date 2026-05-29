@@ -25,6 +25,14 @@ y visita `http://localhost:8767`.
 - Inicio: `index.html`
 - Día de boda: `index.html#dia-20`
 - Agenda completa: `index.html#agenda`
+- Selección de almuerzo: `lunch.html`
+
+## Selección de almuerzo
+
+`lunch.html` funciona como formulario visual en inglés, japonés e hindi. Por
+ahora guarda pruebas localmente en el navegador si `FORM_ENDPOINT` está vacío.
+Antes de compartirlo con invitados, conecta `FORM_ENDPOINT` en `lunch.js` a un
+endpoint central, por ejemplo Google Apps Script + Google Sheets o Formspree.
 
 ## Publicar gratis
 
