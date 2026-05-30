@@ -37,8 +37,7 @@ body {
 
 button,
 input,
-select,
-textarea {
+select {
   font: inherit;
 }
 
@@ -262,6 +261,58 @@ h1 {
   padding: clamp(22px, 4vw, 38px);
 }
 
+.andes-ornaments {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+}
+
+.motif {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+}
+
+.motif-mountain {
+  background:
+    linear-gradient(135deg, transparent 48%, var(--green) 49% 63%, transparent 64%),
+    linear-gradient(45deg, transparent 42%, var(--blue) 43% 58%, transparent 59%),
+    linear-gradient(var(--gold), var(--gold)) bottom / 100% 4px no-repeat;
+}
+
+.motif-chakana {
+  background: var(--red);
+  clip-path: polygon(
+    34% 0,
+    66% 0,
+    66% 34%,
+    100% 34%,
+    100% 66%,
+    66% 66%,
+    66% 100%,
+    34% 100%,
+    34% 66%,
+    0 66%,
+    0 34%,
+    34% 34%
+  );
+}
+
+.motif-sun {
+  border: 4px solid var(--gold);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 154, 23, 0.18) 42%, transparent 44%);
+  box-shadow:
+    0 -14px 0 -11px var(--gold),
+    0 14px 0 -11px var(--gold),
+    14px 0 0 -11px var(--gold),
+    -14px 0 0 -11px var(--gold);
+}
+
 .form-heading {
   display: flex;
   align-items: end;
@@ -307,6 +358,11 @@ h1 {
   gap: 16px;
 }
 
+.field-grid.single-field {
+  max-width: 520px;
+  grid-template-columns: 1fr;
+}
+
 label,
 .full-field {
   display: grid;
@@ -318,8 +374,7 @@ label,
 }
 
 input,
-select,
-textarea {
+select {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 0;
@@ -330,21 +385,15 @@ textarea {
   outline: none;
 }
 
-textarea {
-  min-height: 110px;
-  resize: vertical;
-}
-
 input:focus,
-select:focus,
-textarea:focus {
+select:focus {
   border-color: var(--deep);
   box-shadow: 0 0 0 3px rgba(30, 47, 38, 0.12);
 }
 
 .meal-options {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 1px;
   border: 1px solid var(--line);
   background: var(--line);
@@ -353,19 +402,44 @@ textarea:focus {
 .meal-option {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 14px;
-  align-items: start;
+  grid-template-columns: auto minmax(160px, 240px) 1fr;
+  min-height: 168px;
+  align-items: stretch;
+  overflow: hidden;
   background: #fffdf8;
-  padding: 18px;
   cursor: pointer;
 }
 
+.meal-option__photo {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  min-height: 168px;
+  overflow: hidden;
+  background: var(--deep);
+}
+
+.meal-option__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 220ms ease;
+}
+
 .meal-option input {
+  grid-column: 1;
+  grid-row: 1;
   width: 18px;
   height: 18px;
-  margin-top: 3px;
+  margin: 22px 18px;
   accent-color: var(--red);
+}
+
+.meal-option > span:not(.meal-option__photo) {
+  grid-column: 3;
+  grid-row: 1;
+  align-self: center;
+  padding: 22px 24px;
 }
 
 .meal-option strong,
@@ -376,7 +450,7 @@ textarea:focus {
 
 .meal-option strong {
   font-family: var(--serif);
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.04;
 }
 
@@ -406,28 +480,8 @@ textarea:focus {
     #fffdf8;
 }
 
-.check-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  margin-bottom: 18px;
-  border: 1px solid var(--line);
-  background: var(--line);
-}
-
-.check-grid label {
-  display: flex;
-  min-height: 48px;
-  align-items: center;
-  gap: 10px;
-  background: #fffdf8;
-  padding: 12px 14px;
-}
-
-.check-grid input {
-  width: 17px;
-  height: 17px;
-  accent-color: var(--red);
+.meal-option:has(input:checked) .meal-option__photo img {
+  transform: scale(1.035);
 }
 
 .form-actions {
@@ -559,6 +613,19 @@ textarea:focus {
   font-weight: 950;
 }
 
+.meal-footer {
+  width: min(1180px, calc(100% - 36px));
+  margin: -26px auto 48px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.meal-footer a {
+  color: var(--deep);
+  font-weight: 850;
+}
+
 :lang(ja) h1,
 :lang(ja) h2,
 :lang(ja) .meal-option strong,
@@ -647,9 +714,33 @@ textarea:focus {
   }
 
   .field-grid,
-  .meal-options,
-  .check-grid {
+  .meal-options {
     grid-template-columns: 1fr;
+  }
+
+  .meal-option {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 0;
+  }
+
+  .meal-option__photo {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+  }
+
+  .meal-option input {
+    grid-column: 1;
+    grid-row: 2;
+    margin: 18px 0 0 18px;
+  }
+
+  .meal-option > span:not(.meal-option__photo) {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 16px 18px 18px 0;
   }
 
   .meal-form,
@@ -658,7 +749,7 @@ textarea:focus {
   }
 
   .meal-option strong {
-    font-size: 22px;
+    font-size: 21px;
   }
 
   .summary-panel img {

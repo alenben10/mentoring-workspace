@@ -31,8 +31,21 @@ y visita `http://localhost:8767`.
 
 `lunch.html` funciona como formulario visual en inglés, japonés e hindi. Por
 ahora guarda pruebas localmente en el navegador si `FORM_ENDPOINT` está vacío.
-Antes de compartirlo con invitados, conecta `FORM_ENDPOINT` en `lunch.js` a un
-endpoint central, por ejemplo Google Apps Script + Google Sheets o Formspree.
+
+La forma recomendada para recopilar respuestas reales es Google Sheets + Apps
+Script:
+
+1. Crea un Google Sheet nuevo para las respuestas.
+2. En el Sheet, abre `Extensiones > Apps Script`.
+3. Pega el contenido de `google-apps-script-lunch.js`.
+4. Ejecuta `setupLunchSheet` una vez para crear los encabezados y aceptar permisos.
+5. Despliega el script con `Deploy > New deployment > Web app`.
+6. Configura `Execute as: Me` y acceso para invitados sin login.
+7. Copia la URL terminada en `/exec`.
+8. Pega esa URL en `FORM_ENDPOINT` dentro de `lunch.js`.
+
+Alternativa rápida: Formspree puede recibir formularios desde sitios estáticos,
+pero Google Sheets es más conveniente si la lista final se manejará desde Drive.
 
 ## Publicar gratis
 

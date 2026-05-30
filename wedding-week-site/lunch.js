@@ -10,39 +10,23 @@ const langMeta = {
 const copy = {
   en: {
     title: "Wedding lunch selection",
-    intro: "Please choose one lunch option per guest. The exact dishes will be updated soon.",
+    intro: "Please choose one lunch option per guest from the confirmed menu.",
     deadline: "Deadline to be confirmed",
     onePerGuest: "One response per guest",
     photoCaption: "Family lunch preferences",
     formKicker: "Guest response",
     formTitle: "Tell us your lunch choice",
-    guestInfo: "Guest information",
+    guestInfo: "Guest name",
     guestName: "Guest name",
-    partyName: "Family / party name",
-    contact: "Email or phone",
-    guestType: "Guest type",
-    guestTypeFamily: "Family",
-    guestTypeFriend: "Friend",
-    guestTypeCornell: "Cornell",
-    guestTypeOther: "Other",
     mealLegend: "Lunch options",
-    mealNote: "These are placeholders. Alen will replace them with the real dishes.",
-    dietLegend: "Dietary notes",
-    dietNone: "No restrictions",
-    dietVegetarian: "Vegetarian",
-    dietVegan: "Vegan",
-    dietGluten: "Gluten-free",
-    dietNuts: "Nut allergy",
-    dietOther: "Other",
-    notes: "Notes for allergies or preferences",
+    mealNote: "Please select the entree you would like for the wedding lunch.",
     submit: "Submit lunch choice",
     reset: "Clear form",
     summaryKicker: "Live summary",
     summaryTitle: "Current selection",
     summaryGuest: "Guest",
     summaryMeal: "Meal",
-    summaryDiet: "Dietary notes",
-    summaryHelp: "Once the final dishes are confirmed, this page can send responses to a spreadsheet.",
+    summaryHelp: "This page can send each guest's name and meal choice to a spreadsheet.",
     missingName: "Please enter the guest name.",
     missingMeal: "Please choose one lunch option.",
     demoSaved: "Preview saved on this device. Before sharing with guests, Alen will connect this form to a spreadsheet.",
@@ -52,39 +36,23 @@ const copy = {
   },
   ja: {
     title: "結婚式ランチの選択",
-    intro: "ゲストお一人につき、ランチを1つお選びください。正式な料理名は後日更新します。",
+    intro: "確定したメニューから、ゲストお一人につきランチを1つお選びください。",
     deadline: "締切は後日お知らせします",
     onePerGuest: "お一人につき1回答",
     photoCaption: "ランチの希望",
     formKicker: "ゲスト回答",
     formTitle: "ランチの希望を教えてください",
-    guestInfo: "ゲスト情報",
+    guestInfo: "お名前",
     guestName: "お名前",
-    partyName: "家族名 / グループ名",
-    contact: "メールまたは電話番号",
-    guestType: "ゲスト区分",
-    guestTypeFamily: "家族",
-    guestTypeFriend: "友人",
-    guestTypeCornell: "Cornell",
-    guestTypeOther: "その他",
     mealLegend: "ランチの選択肢",
-    mealNote: "これは仮の選択肢です。Alenが正式な料理名に差し替えます。",
-    dietLegend: "食事に関する注意",
-    dietNone: "制限なし",
-    dietVegetarian: "ベジタリアン",
-    dietVegan: "ヴィーガン",
-    dietGluten: "グルテンフリー",
-    dietNuts: "ナッツアレルギー",
-    dietOther: "その他",
-    notes: "アレルギーや希望のメモ",
+    mealNote: "結婚式ランチで召し上がりたいメイン料理をお選びください。",
     submit: "ランチを送信",
     reset: "フォームをクリア",
     summaryKicker: "入力内容",
     summaryTitle: "現在の選択",
     summaryGuest: "ゲスト",
     summaryMeal: "ランチ",
-    summaryDiet: "食事メモ",
-    summaryHelp: "正式な料理が決まったら、このページから回答をスプレッドシートに送れます。",
+    summaryHelp: "このページからゲスト名とランチの希望をスプレッドシートに送れます。",
     missingName: "お名前を入力してください。",
     missingMeal: "ランチを1つ選んでください。",
     demoSaved: "プレビューとしてこの端末に保存しました。ゲストに共有する前に、Alenがスプレッドシートへ接続します。",
@@ -94,39 +62,23 @@ const copy = {
   },
   hi: {
     title: "शादी के लंच का चयन",
-    intro: "कृपया हर मेहमान के लिए एक लंच विकल्प चुनें। असली व्यंजनों के नाम जल्द जोड़े जाएंगे।",
+    intro: "कृपया तय मेन्यू में से हर मेहमान के लिए एक लंच विकल्प चुनें।",
     deadline: "अंतिम तारीख बाद में बताई जाएगी",
     onePerGuest: "हर मेहमान के लिए एक जवाब",
     photoCaption: "परिवार के लंच विकल्प",
     formKicker: "मेहमान का जवाब",
     formTitle: "अपना लंच विकल्प बताएं",
-    guestInfo: "मेहमान की जानकारी",
+    guestInfo: "मेहमान का नाम",
     guestName: "मेहमान का नाम",
-    partyName: "परिवार / समूह का नाम",
-    contact: "ईमेल या फोन",
-    guestType: "मेहमान का प्रकार",
-    guestTypeFamily: "परिवार",
-    guestTypeFriend: "दोस्त",
-    guestTypeCornell: "Cornell",
-    guestTypeOther: "अन्य",
     mealLegend: "लंच विकल्प",
-    mealNote: "ये अभी placeholder हैं। Alen इन्हें असली व्यंजनों से बदलेंगे।",
-    dietLegend: "खाने से जुड़ी जानकारी",
-    dietNone: "कोई restriction नहीं",
-    dietVegetarian: "शाकाहारी",
-    dietVegan: "वीगन",
-    dietGluten: "ग्लूटेन-फ्री",
-    dietNuts: "नट एलर्जी",
-    dietOther: "अन्य",
-    notes: "एलर्जी या पसंद के नोट्स",
+    mealNote: "कृपया शादी के लंच के लिए अपना पसंदीदा मुख्य व्यंजन चुनें।",
     submit: "लंच विकल्प भेजें",
     reset: "फॉर्म साफ करें",
     summaryKicker: "लाइव सारांश",
     summaryTitle: "मौजूदा चयन",
     summaryGuest: "मेहमान",
     summaryMeal: "लंच",
-    summaryDiet: "खाने के नोट्स",
-    summaryHelp: "असली व्यंजन तय होने के बाद यह पेज जवाबों को spreadsheet में भेज सकता है।",
+    summaryHelp: "यह पेज हर मेहमान का नाम और लंच विकल्प spreadsheet में भेज सकता है।",
     missingName: "कृपया मेहमान का नाम लिखें।",
     missingMeal: "कृपया एक लंच विकल्प चुनें।",
     demoSaved: "Preview इस device पर सेव हो गया। मेहमानों को भेजने से पहले Alen इसे spreadsheet से जोड़ेंगे।",
@@ -138,53 +90,48 @@ const copy = {
 
 const mealOptions = [
   {
-    id: "option-a",
-    tag: { en: "Placeholder", ja: "仮", hi: "Placeholder" },
-    title: { en: "Lunch option A", ja: "ランチ A", hi: "लंच विकल्प A" },
+    id: "lobster-ravioli-scallops",
+    image: "./assets/meals/lobster-ravioli.jpg",
+    tag: { en: "Seafood", ja: "シーフード", hi: "समुद्री भोजन" },
+    title: {
+      en: "Lobster ravioli with seared scallops",
+      ja: "ロブスターのラビオリと帆立のソテー",
+      hi: "लॉब्स्टर रैवियोली और सिकी हुई स्कैलप्स",
+    },
     description: {
-      en: "Dish name coming soon.",
-      ja: "料理名は後日追加します。",
-      hi: "व्यंजन का नाम बाद में जोड़ा जाएगा।",
+      en: "Ravioles de langostas y vieiras selladas.",
+      ja: "Ravioles de langostas y vieiras selladas.",
+      hi: "Ravioles de langostas y vieiras selladas.",
     },
   },
   {
-    id: "option-b",
-    tag: { en: "Placeholder", ja: "仮", hi: "Placeholder" },
-    title: { en: "Lunch option B", ja: "ランチ B", hi: "लंच विकल्प B" },
+    id: "grilled-beef-filet",
+    image: "./assets/meals/grilled-beef-filet.jpg",
+    tag: { en: "Beef", ja: "牛肉", hi: "बीफ" },
+    title: {
+      en: "Grilled beef filet",
+      ja: "グリルした牛フィレ",
+      hi: "ग्रिल्ड बीफ फ़िलेट",
+    },
     description: {
-      en: "Dish name coming soon.",
-      ja: "料理名は後日追加します。",
-      hi: "व्यंजन का नाम बाद में जोड़ा जाएगा।",
+      en: "Filete de Res a la parrilla.",
+      ja: "Filete de Res a la parrilla.",
+      hi: "Filete de Res a la parrilla.",
     },
   },
   {
-    id: "option-c",
-    tag: { en: "Placeholder", ja: "仮", hi: "Placeholder" },
-    title: { en: "Lunch option C", ja: "ランチ C", hi: "लंच विकल्प C" },
-    description: {
-      en: "Dish name coming soon.",
-      ja: "料理名は後日追加します。",
-      hi: "व्यंजन का नाम बाद में जोड़ा जाएगा।",
+    id: "stuffed-chicken-breast",
+    image: "./assets/meals/stuffed-chicken-breast.jpg",
+    tag: { en: "Chicken", ja: "鶏肉", hi: "चिकन" },
+    title: {
+      en: "Stuffed chicken breast",
+      ja: "詰め物入り鶏胸肉",
+      hi: "भरवां चिकन ब्रेस्ट",
     },
-  },
-  {
-    id: "child-light",
-    tag: { en: "Optional", ja: "任意", hi: "वैकल्पिक" },
-    title: { en: "Kids / light meal", ja: "キッズ / 軽めの食事", hi: "बच्चों / हल्का भोजन" },
     description: {
-      en: "For children or guests who prefer something lighter.",
-      ja: "お子様、または軽めの食事をご希望の方へ。",
-      hi: "बच्चों या हल्का भोजन चाहने वाले मेहमानों के लिए।",
-    },
-  },
-  {
-    id: "no-lunch",
-    tag: { en: "Optional", ja: "任意", hi: "वैकल्पिक" },
-    title: { en: "I will not need lunch", ja: "ランチは不要です", hi: "मुझे लंच नहीं चाहिए" },
-    description: {
-      en: "Choose this if you will not be eating lunch with the group.",
-      ja: "グループのランチを召し上がらない場合はこちらを選んでください。",
-      hi: "यदि आप समूह के साथ लंच नहीं करेंगे तो इसे चुनें।",
+      en: "Pechuga de pollo cerrado rellena.",
+      ja: "Pechuga de pollo cerrado rellena.",
+      hi: "Pechuga de pollo cerrado rellena.",
     },
   },
 ];
@@ -199,7 +146,6 @@ const downloadCsvButton = document.querySelector("#downloadCsv");
 const clearLocalButton = document.querySelector("#clearLocal");
 const summaryGuest = document.querySelector("#summaryGuest");
 const summaryMeal = document.querySelector("#summaryMeal");
-const summaryDiet = document.querySelector("#summaryDiet");
 
 let currentLang = localStorage.getItem("mealLanguage") || "en";
 if (!copy[currentLang]) currentLang = "en";
@@ -228,6 +174,9 @@ function renderMealOptions() {
   mealOptionsEl.innerHTML = mealOptions.map((option) => `
     <label class="meal-option">
       <input type="radio" name="mealChoice" value="${option.id}" ${selected === option.id ? "checked" : ""} required>
+      <span class="meal-option__photo">
+        <img src="${option.image}" alt="" loading="lazy">
+      </span>
       <span>
         <strong>${option.title[currentLang]}</strong>
         <small>${option.description[currentLang]}</small>
@@ -243,17 +192,10 @@ function getSelectedMealLabel() {
   return option ? option.title[currentLang] : t("none");
 }
 
-function getSelectedDietLabels() {
-  return [...form.querySelectorAll("input[name='diet']:checked")]
-    .map((input) => input.nextElementSibling.textContent.trim());
-}
-
 function updateSummary() {
   const guestName = form.guestName.value.trim();
-  const diets = getSelectedDietLabels();
   summaryGuest.textContent = guestName || "-";
   summaryMeal.textContent = getSelectedMealLabel();
-  summaryDiet.textContent = diets.length ? diets.join(", ") : t("none");
 }
 
 function getSubmissions() {
@@ -282,20 +224,15 @@ function escapeHtml(value) {
 function entryFromForm() {
   const formData = new FormData(form);
   const meal = mealOptions.find((option) => option.id === formData.get("mealChoice"));
-  const diet = [...form.querySelectorAll("input[name='diet']:checked")].map((input) => input.value);
 
   return {
     submittedAt: new Date().toISOString(),
     language: currentLang,
     guestName: formData.get("guestName").trim(),
-    partyName: formData.get("partyName").trim(),
-    contact: formData.get("contact").trim(),
-    guestType: formData.get("guestType"),
     mealChoice: meal?.id || "",
     mealLabelEn: meal?.title.en || "",
     mealLabelCurrent: meal?.title[currentLang] || "",
-    diet,
-    notes: formData.get("notes").trim(),
+    userAgent: navigator.userAgent,
   };
 }
 
@@ -320,13 +257,18 @@ async function submitEntry(entry) {
     return { ok: true, demo: true };
   }
 
-  const response = await fetch(FORM_ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(entry),
+  const body = new URLSearchParams();
+  Object.entries(entry).forEach(([key, value]) => {
+    body.append(key, value);
   });
 
-  return { ok: response.ok, demo: false };
+  await fetch(FORM_ENDPOINT, {
+    method: "POST",
+    mode: "no-cors",
+    body,
+  });
+
+  return { ok: true, demo: false };
 }
 
 function renderAdminTable() {
@@ -337,8 +279,7 @@ function renderAdminTable() {
       <td>${escapeHtml(entry.submittedAt)}</td>
       <td>${escapeHtml(entry.guestName)}</td>
       <td>${escapeHtml(entry.mealLabelEn)}</td>
-      <td>${escapeHtml(entry.diet.join(", "))}</td>
-      <td>${escapeHtml(entry.notes)}</td>
+      <td>${escapeHtml(entry.language)}</td>
     </tr>
   `).join("");
 }
@@ -349,7 +290,7 @@ function csvEscape(value) {
 
 function downloadCsv() {
   const rows = getSubmissions();
-  const headers = ["submittedAt", "language", "guestName", "partyName", "contact", "guestType", "mealChoice", "mealLabelEn", "diet", "notes"];
+  const headers = ["submittedAt", "language", "guestName", "mealChoice", "mealLabelEn", "mealLabelCurrent"];
   const csv = [
     headers.join(","),
     ...rows.map((row) => headers.map((header) => csvEscape(Array.isArray(row[header]) ? row[header].join("; ") : row[header])).join(",")),

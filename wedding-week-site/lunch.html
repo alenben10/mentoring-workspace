@@ -12,7 +12,7 @@
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231e2f26'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23fff8ec'%3EA+B%3C/text%3E%3C/svg%3E"
     >
-    <link rel="stylesheet" href="./lunch.css?v=20260529-lunch1">
+    <link rel="stylesheet" href="./lunch.css?v=20260530-lunch3">
   </head>
   <body>
     <header class="meal-header">
@@ -40,7 +40,7 @@
           <p class="date-line">Alen & Belen · Ithaca, New York</p>
           <h1 id="mealTitle" data-i18n="title">Wedding lunch selection</h1>
           <p data-i18n="intro">
-            Please choose one lunch option per guest. The exact dishes will be updated soon.
+            Please choose one lunch option per guest from the confirmed menu.
           </p>
           <div class="status-row" aria-label="Form status">
             <span data-i18n="deadline">Deadline to be confirmed</span>
@@ -55,34 +55,22 @@
 
       <section class="meal-workspace" aria-labelledby="formTitle">
         <form class="meal-form" id="mealForm" novalidate>
+          <div class="andes-ornaments" aria-hidden="true">
+            <span class="motif motif-mountain"></span>
+            <span class="motif motif-chakana"></span>
+            <span class="motif motif-sun"></span>
+          </div>
           <div class="form-heading">
             <span data-i18n="formKicker">Guest response</span>
             <h2 id="formTitle" data-i18n="formTitle">Tell us your lunch choice</h2>
           </div>
 
           <fieldset class="form-section">
-            <legend data-i18n="guestInfo">Guest information</legend>
-            <div class="field-grid">
+            <legend data-i18n="guestInfo">Guest name</legend>
+            <div class="field-grid single-field">
               <label>
                 <span data-i18n="guestName">Guest name</span>
                 <input id="guestName" name="guestName" type="text" autocomplete="name" required>
-              </label>
-              <label>
-                <span data-i18n="partyName">Family / party name</span>
-                <input id="partyName" name="partyName" type="text" autocomplete="organization">
-              </label>
-              <label>
-                <span data-i18n="contact">Email or phone</span>
-                <input id="contact" name="contact" type="text" autocomplete="email">
-              </label>
-              <label>
-                <span data-i18n="guestType">Guest type</span>
-                <select id="guestType" name="guestType">
-                  <option value="family" data-i18n="guestTypeFamily">Family</option>
-                  <option value="friend" data-i18n="guestTypeFriend">Friend</option>
-                  <option value="cornell" data-i18n="guestTypeCornell">Cornell</option>
-                  <option value="other" data-i18n="guestTypeOther">Other</option>
-                </select>
               </label>
             </div>
           </fieldset>
@@ -90,25 +78,9 @@
           <fieldset class="form-section">
             <legend data-i18n="mealLegend">Lunch options</legend>
             <p class="section-note" data-i18n="mealNote">
-              These are placeholders. Alen will replace them with the real dishes.
+              Please select the entree you would like for the wedding lunch.
             </p>
             <div class="meal-options" id="mealOptions"></div>
-          </fieldset>
-
-          <fieldset class="form-section">
-            <legend data-i18n="dietLegend">Dietary notes</legend>
-            <div class="check-grid">
-              <label><input type="checkbox" name="diet" value="no-restrictions"> <span data-i18n="dietNone">No restrictions</span></label>
-              <label><input type="checkbox" name="diet" value="vegetarian"> <span data-i18n="dietVegetarian">Vegetarian</span></label>
-              <label><input type="checkbox" name="diet" value="vegan"> <span data-i18n="dietVegan">Vegan</span></label>
-              <label><input type="checkbox" name="diet" value="gluten-free"> <span data-i18n="dietGluten">Gluten-free</span></label>
-              <label><input type="checkbox" name="diet" value="nut-allergy"> <span data-i18n="dietNuts">Nut allergy</span></label>
-              <label><input type="checkbox" name="diet" value="other"> <span data-i18n="dietOther">Other</span></label>
-            </div>
-            <label class="full-field">
-              <span data-i18n="notes">Notes for allergies or preferences</span>
-              <textarea id="notes" name="notes" rows="4"></textarea>
-            </label>
           </fieldset>
 
           <div class="form-actions">
@@ -131,13 +103,9 @@
               <dt data-i18n="summaryMeal">Meal</dt>
               <dd id="summaryMeal">-</dd>
             </div>
-            <div>
-              <dt data-i18n="summaryDiet">Dietary notes</dt>
-              <dd id="summaryDiet">-</dd>
-            </div>
           </dl>
           <p data-i18n="summaryHelp">
-            Once the final dishes are confirmed, this page can send responses to a spreadsheet.
+            This page can send each guest's name and meal choice to a spreadsheet.
           </p>
         </aside>
       </section>
@@ -161,16 +129,22 @@
                 <th>Time</th>
                 <th>Name</th>
                 <th>Meal</th>
-                <th>Diet</th>
-                <th>Notes</th>
+                <th>Language</th>
               </tr>
             </thead>
             <tbody></tbody>
           </table>
         </div>
       </section>
+
+      <footer class="meal-footer">
+        <span>Food photos via Wikimedia Commons:</span>
+        <a href="https://commons.wikimedia.org/wiki/File:Lobster_ravioli_-_Fiola_-_Stierch_2018_02.jpg">Sarah Stierch, CC BY 4.0</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:10oz._Filet_Mignon.jpg">Arnold Gatilao, CC BY 2.0</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:Chicken_Kiev_in_Kiev.jpg">Giles Thomas, CC BY-SA 2.0</a>.
+      </footer>
     </main>
 
-    <script src="./lunch.js?v=20260529-lunch1"></script>
+    <script src="./lunch.js?v=20260530-lunch3"></script>
   </body>
 </html>
