@@ -128,9 +128,9 @@ function readState_() {
     sync: {
       mode: "google",
       docName: document.getName(),
-      docUrl: workspaceAwareUrl_(document.getUrl()),
+      docUrl: document.getUrl(),
       sheetName: spreadsheet.getName(),
-      sheetUrl: workspaceAwareUrl_(spreadsheet.getUrl()),
+      sheetUrl: spreadsheet.getUrl(),
       lastSync: new Date().toISOString(),
     },
   };
@@ -661,19 +661,6 @@ function toDateInput_(date) {
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
-}
-
-function workspaceAwareUrl_(url) {
-  const domain = googleWorkspaceDomain_();
-  if (!domain || !/^https:\/\/docs\.google\.com\//.test(String(url || ""))) return url;
-  return String(url).replace("https://docs.google.com/", `https://docs.google.com/a/${domain}/`);
-}
-
-function googleWorkspaceDomain_() {
-  const email = String(Session.getEffectiveUser().getEmail() || "").trim();
-  const domain = email.includes("@") ? email.split("@").pop().toLowerCase() : "";
-  if (!domain || domain === "gmail.com" || domain === "googlemail.com") return "";
-  return domain;
 }
 
 function isDateInput_(value) {
