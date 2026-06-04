@@ -307,27 +307,58 @@
   const { Config, Data } = App;
 
   function createProvider() {
-    const hasAppsScript = typeof google !== "undefined" && google.script && google.script.run;
-    if (hasAppsScript) {
-      return {
-        mode: "google",
-        loadState: () => callServer("apiGetState"),
-        submitDailyLog: (log) => callServer("apiSubmitDailyLog", log),
-        upsertTask: (task) => callServer("apiUpsertTask", task),
-        deleteTask: (id) => callServer("apiDeleteTask", id),
-        resetWorkspace: () => callServer("apiResetWorkspace"),
-      };
-    }
+    if (hasAppsScriptRuntime() || isAppsScriptHost()) return createGoogleProvider();
     return createLocalProvider();
   }
 
-  function callServer(functionName, ...args) {
+  function createGoogleProvider() {
+    return {
+      mode: "google",
+      loadState: () => callServer("apiGetState"),
+      submitDailyLog: (log) => callServer("apiSubmitDailyLog", log),
+      upsertTask: (task) => callServer("apiUpsertTask", task),
+      deleteTask: (id) => callServer("apiDeleteTask", id),
+      resetWorkspace: () => callServer("apiResetWorkspace"),
+    };
+  }
+
+  function hasAppsScriptRuntime() {
+    return typeof google !== "undefined" && google.script && google.script.run;
+  }
+
+  function isAppsScriptHost() {
+    const host = window.location.hostname;
+    return host.endsWith("script.googleusercontent.com")
+      || host === "script.google.com"
+      || document.referrer.includes("script.google.com");
+  }
+
+  function waitForAppsScriptRuntime(timeoutMs = 8000) {
+    if (hasAppsScriptRuntime()) return Promise.resolve();
+    const startedAt = Date.now();
     return new Promise((resolve, reject) => {
+      const check = () => {
+        if (hasAppsScriptRuntime()) {
+          resolve();
+          return;
+        }
+        if (Date.now() - startedAt >= timeoutMs) {
+          reject(new Error("Google Apps Script runtime did not load. Refresh the deployed script.google.com page and try again."));
+          return;
+        }
+        window.setTimeout(check, 50);
+      };
+      check();
+    });
+  }
+
+  function callServer(functionName, ...args) {
+    return waitForAppsScriptRuntime().then(() => new Promise((resolve, reject) => {
       google.script.run
         .withSuccessHandler(resolve)
         .withFailureHandler((error) => reject(new Error(error.message || String(error))))
         [functionName](...args);
-    });
+    }));
   }
 
   function createLocalProvider() {
@@ -434,6 +465,7 @@
   function init() {
     cacheElements();
     state.provider = Providers.createProvider();
+    renderInitialSyncState();
     bindEvents();
     loadState();
   }
@@ -1189,6 +1221,13 @@
     els.syncMode.textContent = state.provider.mode === "google" ? "Google Drive connected" : "Local preview";
     setSyncLink(els.docLink, els.docStatus, sync.docUrl, sync.docName || "Not connected");
     setSyncLink(els.sheetLink, els.sheetStatus, sync.sheetUrl, sync.sheetName || "Not connected");
+  }
+
+  function renderInitialSyncState() {
+    if (state.provider.mode !== "google") return;
+    els.syncMode.textContent = "Connecting to Google Drive";
+    setSyncLink(els.docLink, els.docStatus, "", "Loading");
+    setSyncLink(els.sheetLink, els.sheetStatus, "", "Loading");
   }
 
   function setSyncLink(link, status, url, label) {

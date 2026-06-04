@@ -31,6 +31,7 @@
   function init() {
     cacheElements();
     state.provider = Providers.createProvider();
+    renderInitialSyncState();
     bindEvents();
     loadState();
   }
@@ -786,6 +787,13 @@
     els.syncMode.textContent = state.provider.mode === "google" ? "Google Drive connected" : "Local preview";
     setSyncLink(els.docLink, els.docStatus, sync.docUrl, sync.docName || "Not connected");
     setSyncLink(els.sheetLink, els.sheetStatus, sync.sheetUrl, sync.sheetName || "Not connected");
+  }
+
+  function renderInitialSyncState() {
+    if (state.provider.mode !== "google") return;
+    els.syncMode.textContent = "Connecting to Google Drive";
+    setSyncLink(els.docLink, els.docStatus, "", "Loading");
+    setSyncLink(els.sheetLink, els.sheetStatus, "", "Loading");
   }
 
   function setSyncLink(link, status, url, label) {
