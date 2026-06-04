@@ -9,6 +9,7 @@ const CONFIG = {
   // create a Doc and Sheet in your Drive on first use.
   DOCUMENT_ID: "",
   SPREADSHEET_ID: "",
+  SEED_DEFAULT_TASKS: false,
 
   DOCUMENT_NAME: "Mentoring Daily Log",
   SPREADSHEET_NAME: "Mentoring Task Tracker",
@@ -143,7 +144,7 @@ function ensureSchema_() {
   const tasksSheet = getSheet_(spreadsheet, CONFIG.TASKS_SHEET, TASK_HEADERS);
   const seedKey = defaultTasksSeededKey_(spreadsheet);
   const hasSeededDefaultTasks = properties.getProperty(seedKey) === "true";
-  if (!hasSeededDefaultTasks && tasksSheet.getLastRow() < 2) {
+  if (CONFIG.SEED_DEFAULT_TASKS && !hasSeededDefaultTasks && tasksSheet.getLastRow() < 2) {
     buildDefaultTasks_().forEach((task) => {
       tasksSheet.appendRow(TASK_HEADERS.map((header) => task[header] || ""));
     });
