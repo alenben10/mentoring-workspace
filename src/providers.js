@@ -11,6 +11,7 @@
         submitDailyLog: (log) => callServer("apiSubmitDailyLog", log),
         upsertTask: (task) => callServer("apiUpsertTask", task),
         deleteTask: (id) => callServer("apiDeleteTask", id),
+        resetWorkspace: () => callServer("apiResetWorkspace"),
       };
     }
     return createLocalProvider();
@@ -56,7 +57,16 @@
         saveLocalData(data);
         return data;
       },
-  };
+      async resetWorkspace() {
+        const data = getLocalData();
+        data.tasks = [];
+        data.dailyLogs = [];
+        data.project.people = Data.getPeople(data);
+        stampLocalSync(data);
+        saveLocalData(data);
+        return data;
+      },
+    };
   }
 
   function getLocalData() {

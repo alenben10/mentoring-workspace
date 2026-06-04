@@ -81,6 +81,14 @@ function apiDeleteTask(id) {
   });
 }
 
+function apiResetWorkspace() {
+  return withProjectLock_(() => {
+    ensureSchema_();
+    resetWorkspaceData_();
+    return readState_();
+  });
+}
+
 function readState_() {
   const spreadsheet = getSpreadsheet_();
   const document = getDocument_();
@@ -133,10 +141,15 @@ function ensureSchema_() {
   const schemaKey = `SCHEMA_VERSION_${spreadsheet.getId()}`;
   const shouldFormat = properties.getProperty(schemaKey) !== SCHEMA_VERSION;
   const tasksSheet = getSheet_(spreadsheet, CONFIG.TASKS_SHEET, TASK_HEADERS);
-  if (tasksSheet.getLastRow() < 2) {
+  const seedKey = defaultTasksSeededKey_(spreadsheet);
+  const hasSeededDefaultTasks = properties.getProperty(seedKey) === "true";
+  if (!hasSeededDefaultTasks && tasksSheet.getLastRow() < 2) {
     buildDefaultTasks_().forEach((task) => {
       tasksSheet.appendRow(TASK_HEADERS.map((header) => task[header] || ""));
     });
+    properties.setProperty(seedKey, "true");
+  } else if (tasksSheet.getLastRow() >= 2) {
+    properties.setProperty(seedKey, "true");
   }
 
   const logsSheet = getSheet_(spreadsheet, CONFIG.LOGS_SHEET, LOG_HEADERS);
@@ -147,6 +160,38 @@ function ensureSchema_() {
   }
 
   getDocument_();
+}
+
+function resetWorkspaceData_() {
+  const spreadsheet = getSpreadsheet_();
+  const properties = PropertiesService.getScriptProperties();
+  const tasksSheet = getSheet_(spreadsheet, CONFIG.TASKS_SHEET, TASK_HEADERS);
+  const logsSheet = getSheet_(spreadsheet, CONFIG.LOGS_SHEET, LOG_HEADERS);
+  clearSheetDataRows_(tasksSheet, TASK_HEADERS);
+  clearSheetDataRows_(logsSheet, LOG_HEADERS);
+  properties.setProperty(defaultTasksSeededKey_(spreadsheet), "true");
+  formatTaskSheet_(tasksSheet);
+  formatLogSheet_(logsSheet);
+  properties.setProperty(`SCHEMA_VERSION_${spreadsheet.getId()}`, SCHEMA_VERSION);
+  resetDocument_();
+}
+
+function defaultTasksSeededKey_(spreadsheet) {
+  return `DEFAULT_TASKS_SEEDED_${spreadsheet.getId()}`;
+}
+
+function clearSheetDataRows_(sheet, headers) {
+  ensureHeaders_(sheet, headers);
+  const dataRows = sheet.getLastRow() - 1;
+  if (dataRows > 0) sheet.getRange(2, 1, dataRows, headers.length).clearContent();
+}
+
+function resetDocument_() {
+  const document = getDocument_();
+  const body = document.getBody();
+  body.clear();
+  appendDocumentHeader_(body);
+  document.saveAndClose();
 }
 
 function getSpreadsheet_() {
@@ -171,13 +216,17 @@ function getDocument_() {
   if (savedId) return DocumentApp.openById(savedId);
 
   const document = DocumentApp.create(CONFIG.DOCUMENT_NAME);
-  document.getBody().appendParagraph(CONFIG.PROJECT_TITLE).setHeading(DocumentApp.ParagraphHeading.HEADING1);
-  document.getBody().appendParagraph(`Mentor: ${CONFIG.MENTOR}`);
-  document.getBody().appendParagraph(`Mentee: ${CONFIG.MENTEE}`);
-  document.getBody().appendParagraph(`People: ${CONFIG.PEOPLE.join(", ")}`);
+  appendDocumentHeader_(document.getBody());
   document.saveAndClose();
   properties.setProperty("DOCUMENT_ID", document.getId());
   return DocumentApp.openById(document.getId());
+}
+
+function appendDocumentHeader_(body) {
+  body.appendParagraph(CONFIG.PROJECT_TITLE).setHeading(DocumentApp.ParagraphHeading.HEADING1);
+  body.appendParagraph(`Mentor: ${CONFIG.MENTOR}`);
+  body.appendParagraph(`Mentee: ${CONFIG.MENTEE}`);
+  body.appendParagraph(`People: ${CONFIG.PEOPLE.join(", ")}`);
 }
 
 function getSheet_(spreadsheet, name, headers) {

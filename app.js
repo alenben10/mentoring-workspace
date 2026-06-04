@@ -315,6 +315,7 @@
         submitDailyLog: (log) => callServer("apiSubmitDailyLog", log),
         upsertTask: (task) => callServer("apiUpsertTask", task),
         deleteTask: (id) => callServer("apiDeleteTask", id),
+        resetWorkspace: () => callServer("apiResetWorkspace"),
       };
     }
     return createLocalProvider();
@@ -360,7 +361,16 @@
         saveLocalData(data);
         return data;
       },
-  };
+      async resetWorkspace() {
+        const data = getLocalData();
+        data.tasks = [];
+        data.dailyLogs = [];
+        data.project.people = Data.getPeople(data);
+        stampLocalSync(data);
+        saveLocalData(data);
+        return data;
+      },
+    };
   }
 
   function getLocalData() {
@@ -527,7 +537,7 @@
       els.settingsDialog.showModal();
     });
     els.exportButton.addEventListener("click", exportJson);
-    els.resetButton.addEventListener("click", resetLocalData);
+    els.resetButton.addEventListener("click", resetWorkspace);
     els.taskForm.addEventListener("submit", saveTaskFromDialog);
     els.closeTaskDialogButton.addEventListener("click", closeTaskDialog);
     els.cancelTaskButton.addEventListener("click", closeTaskDialog);
@@ -1485,14 +1495,17 @@
     URL.revokeObjectURL(url);
   }
 
-  function resetLocalData() {
-    if (state.provider.mode !== "local") {
-      showToast("Reset is only available in local preview");
-      return;
-    }
-    if (!window.confirm("Reset local data to the starter plan?")) return;
-    localStorage.removeItem(Config.storageKey);
-    loadState("Local data reset");
+  async function resetWorkspace() {
+    const message = state.provider.mode === "google"
+      ? "Clear all tasks and daily logs from the Google Sheet, and reset the Google Doc? This cannot be undone."
+      : "Clear all local tasks and daily logs? This cannot be undone.";
+    if (!window.confirm(message)) return;
+    await runAction("Clearing workspace...", async () => {
+      state.data = Data.normalizeData(await state.provider.resetWorkspace());
+      render();
+      showToast("Workspace cleared");
+      els.settingsDialog.close();
+    });
   }
 
   async function runAction(label, action) {
