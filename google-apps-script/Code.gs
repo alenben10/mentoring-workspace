@@ -23,6 +23,7 @@ const STATUS_ALIASES = { open: "in_progress" };
 const MAX_FIGURE_BYTES = 5 * 1024 * 1024;
 const MAX_FIGURE_FILES = 6;
 const MAX_TOTAL_FIGURE_BYTES = 12 * 1024 * 1024;
+const SCHEMA_VERSION = "2026-06-04-fast-sync";
 
 function doGet() {
   return HtmlService.createHtmlOutputFromFile("Index")
@@ -55,7 +56,6 @@ function apiSubmitDailyLog(log) {
     const sheet = getSheet_(spreadsheet, CONFIG.LOGS_SHEET, LOG_HEADERS);
     sheet.appendRow(LOG_HEADERS.map((header) => clean[header] || ""));
     appendLogToDocument_(clean);
-    formatLogSheet_(sheet);
     return readState_();
   });
 }
@@ -67,7 +67,6 @@ function apiUpsertTask(task) {
     const spreadsheet = getSpreadsheet_();
     const sheet = getSheet_(spreadsheet, CONFIG.TASKS_SHEET, TASK_HEADERS);
     upsertRow_(sheet, TASK_HEADERS, clean.id, clean);
-    formatTaskSheet_(sheet);
     return readState_();
   });
 }
@@ -78,7 +77,6 @@ function apiDeleteTask(id) {
     const spreadsheet = getSpreadsheet_();
     const sheet = getSheet_(spreadsheet, CONFIG.TASKS_SHEET, TASK_HEADERS);
     deleteRowById_(sheet, String(id));
-    formatTaskSheet_(sheet);
     return readState_();
   });
 }
@@ -121,9 +119,9 @@ function readState_() {
     sync: {
       mode: "google",
       docName: document.getName(),
-      docUrl: document.getUrl(),
+      docUrl: workspaceAwareUrl_(document.getUrl()),
       sheetName: spreadsheet.getName(),
-      sheetUrl: spreadsheet.getUrl(),
+      sheetUrl: workspaceAwareUrl_(spreadsheet.getUrl()),
       lastSync: new Date().toISOString(),
     },
   };
@@ -131,16 +129,22 @@ function readState_() {
 
 function ensureSchema_() {
   const spreadsheet = getSpreadsheet_();
+  const properties = PropertiesService.getScriptProperties();
+  const schemaKey = `SCHEMA_VERSION_${spreadsheet.getId()}`;
+  const shouldFormat = properties.getProperty(schemaKey) !== SCHEMA_VERSION;
   const tasksSheet = getSheet_(spreadsheet, CONFIG.TASKS_SHEET, TASK_HEADERS);
   if (tasksSheet.getLastRow() < 2) {
     buildDefaultTasks_().forEach((task) => {
       tasksSheet.appendRow(TASK_HEADERS.map((header) => task[header] || ""));
     });
   }
-  formatTaskSheet_(tasksSheet);
 
   const logsSheet = getSheet_(spreadsheet, CONFIG.LOGS_SHEET, LOG_HEADERS);
-  formatLogSheet_(logsSheet);
+  if (shouldFormat) {
+    formatTaskSheet_(tasksSheet);
+    formatLogSheet_(logsSheet);
+    properties.setProperty(schemaKey, SCHEMA_VERSION);
+  }
 
   getDocument_();
 }
@@ -607,6 +611,19 @@ function toDateInput_(date) {
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
+}
+
+function workspaceAwareUrl_(url) {
+  const domain = googleWorkspaceDomain_();
+  if (!domain || !/^https:\/\/docs\.google\.com\//.test(String(url || ""))) return url;
+  return String(url).replace("https://docs.google.com/", `https://docs.google.com/a/${domain}/`);
+}
+
+function googleWorkspaceDomain_() {
+  const email = String(Session.getEffectiveUser().getEmail() || "").trim();
+  const domain = email.includes("@") ? email.split("@").pop().toLowerCase() : "";
+  if (!domain || domain === "gmail.com" || domain === "googlemail.com") return "";
+  return domain;
 }
 
 function isDateInput_(value) {
